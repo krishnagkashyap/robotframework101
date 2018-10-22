@@ -1,0 +1,8 @@
+<Configuration xmlns="http://www.w3.org/2001/XMLSchema" schemaLocation="http://higgins.eclipse.org/sts/Configuration Configuration.xsd">
+    <Setting Name="SessionConfigurations" Type="htf:map" Path="/DeployedComponent/Server/NGAMServer/Profile/Sme/SessionConfigurations">
+        <Setting Name="Timeout" Type="htf:timeInterval">15 M</Setting>
+        <Setting Name="MaxSessionsPerUser" Type="xsd:integer">400</Setting>
+        <Setting Name="Expiry" Type="htf:timeInterval">480 M</Setting>
+        <Setting Name="CredentialValidityInterval" Type="htf:timeInterval">480 M</Setting>
+    </Setting>
+</Configuration>

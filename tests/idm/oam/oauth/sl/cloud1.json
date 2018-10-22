@@ -1,0 +1,82 @@
+{
+  "name": "RServer0",
+  "description": "Resource Server for 3lOAUTHIDMN0",
+  "allowTokenRetrieval": true,
+  "resourceServerNameSpacePrefix": "RServer0",
+  "authzUserConsentPluginRef": "test",
+  "audienceClaim": {
+    "subjects": [
+      "ab0"
+    ]
+  },
+  "scopes": [
+    {
+      "scopeName": "playsong",
+      "description": "Plays song",
+      "isOffline": true,
+      "requiresUserConsent": false
+    },
+    {
+      "scopeName": "searchsong",
+      "description": "looks for songs",
+      "isOffline": true,
+      "requiresUserConsent": false
+    },
+    {
+      "scopeName": "uploadsong",
+      "description": "uploads songs",
+      "isOffline": true,
+      "requiresUserConsent": false
+    },
+    {
+      "scopeName": "downloadsongs",
+      "description": "downloads songs",
+      "isOffline": true,
+      "requiresUserConsent": false
+    }
+  ],
+  "tokenSettings": {
+    "tokenType": "ACCESS_TOKEN",
+    "tokenExpiry": 9999,
+    "lifeCycleEnabled": true,
+    "refreshTokenEnabled": true,
+    "refreshTokenExpiry": 9999
+  },
+  "tokenAttributes": [
+    {
+      "attrName": "sessionId",
+      "attrValue": "$session.id",
+      "attrType": "dynamic"
+    },
+    {
+      "attrName": "resSrvAttr",
+      "attrValue": "RServer0CONSTANT",
+      "attrType": "static"
+    },
+    {
+      "attrName": "resourceservername",
+      "attrValue": "RServer0",
+      "attrType": "static"
+    },
+    {
+      "attrName": "runtime_request",
+      "attrValue": "${request.res_host}:${request.res_port}${request.res_url}",
+      "attrType": "dynamic"
+    },
+    {
+      "attrName": "runtime_user",
+      "attrValue": "${user.userid}'sgroups:${user.groups},description:${user.attr.description}",
+      "attrType": "dynamic"
+    },
+    {
+      "attrName": "runtime_session",
+      "attrValue": "${session.creation}/${session.expiration}/${session.count}",
+      "attrType": "dynamic"
+    }
+  ],
+  "offlineScopeRef": "Test",
+  "overRideTokenSettings": false,
+  "resServerType": "CUSTOM_RESOURCE_SERVER",
+  "idDomain": "",
+  "resourceServerId": "RServer0ID"
+}

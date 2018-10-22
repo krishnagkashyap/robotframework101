@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.oracle.idm.test.robot</groupId>
+    <artifactId>robot-exec</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>robot-exec</name>
+
+    <parent>
+        <groupId>com.oracle.idm.test.robot</groupId>
+        <artifactId>robot-main</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.robotframework</groupId>
+            <artifactId>robotframework</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>oam.oauth.files</groupId>
+            <artifactId>propfiles</artifactId>
+            <version>0.1</version>
+            <type>properties</type>
+        </dependency>
+        <dependency>
+            <groupId>org.robotframework</groupId>
+            <artifactId>robotframework-maven-plugin</artifactId>
+            <version>1.4.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.markusbernhardt</groupId>
+            <artifactId>robotframework-selenium2library-java</artifactId>
+            <version>1.4.0.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.hi-fi/robotframework-seleniumlibrary -->
+        <!--<dependency>-->
+            <!--<groupId>com.github.hi-fi</groupId>-->
+            <!--<artifactId>robotframework-seleniumlibrary</artifactId>-->
+            <!--<version>3.8.1.1</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.oracle.idm.test.robot</groupId>
+            <artifactId>robot-libraries</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.robotframework</groupId>
+                <artifactId>robotframework-maven-plugin</artifactId>
+                <version>1.4.7</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <testCasesDirectory>
+                        tests/idm/oam/oauth/mdcopenidc/mdcpos2_openid_flows.robot
+                    </testCasesDirectory>
+                    <variableFiles>
+                        <variableFiles>${project.basedir}/settings/common/EnvVariableFile.py</variableFiles>
+                    </variableFiles>
+                    <outputDirectory>${env.T_WORK}/ngam/test/functional/robot-exec/reports</outputDirectory>
+                    <libdoc>
+                        <outputFile>ui_keywords.html</outputFile>
+                        <libraryOrResourceFile>resources\keywords\idm\oam\common\ui_keywords.robot</libraryOrResourceFile>
+                    </libdoc>
+                    <testdoc>
+                        <outputFile>DB_down_tests.html</outputFile>
+                        <dataSourceFile>tests/idm/oam/sme/lrg/DB_down_tests.robot</dataSourceFile>
+                        <!--<dataSourceFile>tests/idm/oam/sme/lrg/session_management.robot</dataSourceFile>-->
+                    </testdoc>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <filesets>
+                        <fileset>
+                            <directory>${env.T_WORK}/ngam/test/functional/robot-exec</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,18 @@
+{
+  "startServers": [
+    "oam_policy_server1",
+    "oam_server1",
+    "AdminServer"
+  ],
+  "stopServers": [
+    "oam_policy_server1",
+    "oam_server1",
+    "AdminServer"
+  ]
+}
+
+{"stop": ["oam_policy_server1","oam_server1","AdminServer"],"start": ["AdminServer"]}
+
+
+
+
